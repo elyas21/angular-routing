@@ -1,0 +1,31 @@
+<div class="p-10 flex justify-center align-middle"  *ngIf="animal | async as animalData">
+
+    <div class="max-w-sm  rounded overflow-hidden shadow-lg">
+        <div class="flex flex-row-reverse m-4 ">
+            <div routerLink="/animals" class="hover:bg-gray-300  flex space-x-2 items-end">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                </svg>
+
+            </div>
+        </div>
+        <img class="w-full max-h-56"  src="{{animalData?.imgUrl}}" alt="Mountain">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2"> {{animalData?.name }}</div>
+            <p class="text-gray-700 text-base">
+                {{animalData?.info}}
+            </p>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+
+        </div>
+    </div>
+</div>
+<!-- <pre>{{animal | async | json}}</pre> -->
