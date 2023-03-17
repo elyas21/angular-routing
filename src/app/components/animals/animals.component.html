@@ -1,7 +1,16 @@
 <p class="text-center text-3xl m-5">animals works!</p>
 
-<div class="bg-sky-300  grid grid-cols-3 gap-2 ml-5 mr-5">
-
-    <img  [routerLink]="[ item.name ]" [queryParams]="{queryInfo:'queryInfo'}" [fragment]="'nameSection'" class="rounded object-fill h-48 w-96" src="{{item.imgUrl}}" *ngFor="let item of animals">
-
+<div class="bg-sky-300 grid md:grid-cols-3 gap-2 ml-5 mr-5">
+  <img
+    [routerLink]="[ item.name]"
+    [queryParams]="{ queryInfo: 'queryInfo' }"
+    [fragment]="'nameSection'"
+    class="rounded object-fill h-48 w-96"
+    src="{{ item.imgUrl }}"
+    *ngFor="let item of animals"
+  />
 </div>
+<pre>
+
+    {{animals[0].name | json}}
+</pre>

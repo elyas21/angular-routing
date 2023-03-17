@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Animals, AnimalsService } from 'src/app/service/animals.service';
 import { Observable } from 'rxjs';
@@ -8,14 +8,17 @@ import { Observable } from 'rxjs';
   templateUrl: './animals-details.component.html',
   styleUrls: ['./animals-details.component.scss']
 })
-export class AnimalsDetailsComponent {
+export class AnimalsDetailsComponent implements OnInit {
   name: string | null = '';
-  animal: Observable<Animals | undefined> | undefined;
+ 
+  animal$: Observable<Animals | undefined> | undefined;
+
+
   constructor(private activatedRoute: ActivatedRoute , private animalService: AnimalsService) {
     this.activatedRoute.paramMap.subscribe(param=>{
       this.name = param.get('name')
       console.log(this.name);
-      this.animal = this.animalService.getAnimalsByName(this.name)
+      this.animal$ = this.animalService.getAnimalsByName(this.name)
     })
     this.activatedRoute.queryParams.subscribe(res=>{
       console.log(res);
@@ -26,4 +29,14 @@ export class AnimalsDetailsComponent {
       
     })
   }
+
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(changeInRoute=>{
+
+      this.animalService.getAnimalsByName(changeInRoute.get('name'))?.subscribe()
+    })
+  }
+
+
+
 }

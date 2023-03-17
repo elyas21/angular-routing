@@ -59,6 +59,11 @@ const routes: Routes = [
     component: AnimalsDetailsComponent
   },
   {
+    path: 'plant',
+
+    loadChildren: () => import('./plants/plants.module').then((m) => m.PlantsModule) 
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
